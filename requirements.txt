@@ -9,3 +9,7 @@ aiofiles
 asyncio
 pycurl
 humanize
+aiosqlite
+structlog
+pydantic-settings
+python-dotenv
