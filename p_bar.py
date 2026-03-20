@@ -3,6 +3,9 @@ import math
 import os
 from Easy_F import hrb,hrt
 from pyrogram.errors import FloodWait
+import structlog
+
+log = structlog.get_logger(__name__)
 
 class Timer:
     def __init__(self, time_between=5):
@@ -31,6 +34,7 @@ async def progress_bar(current,total,reply,start):
             cur=hrb(current)
             try:
                 await reply.edit(f'`┌ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 📈 -【 {perc} 】\n├ 𝙎𝙥𝙚𝙚𝙙 🧲 -【 {sp} 】\n└ 𝙎𝙞𝙯𝙚 📂 -【 {cur} / {tot} 】`')
-               
+
             except FloodWait as e:
-                time.sleep(e.x)
+                import asyncio
+                await asyncio.sleep(e.value)
